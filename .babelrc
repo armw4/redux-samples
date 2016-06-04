@@ -1,0 +1,9 @@
+{
+  "presets": ["react", "es2015"],
+  "plugins": ["transform-regenerator", "transform-runtime"],
+  "env": [["react-transform", {
+    "transforms": "react-transform-hmr",
+    "imports": ["react"],
+    "locals": ["module"]
+  }]]
+}

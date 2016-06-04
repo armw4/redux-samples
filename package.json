@@ -1,0 +1,43 @@
+{
+  "name": "redux-samples",
+  "version": "0.0.0",
+  "description": "redux code samples via @armw4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --progress --content-base client/build/ --inline --hot"
+  },
+  "keywords": [
+    "redux",
+    "sample"
+  ],
+  "author": "Antwan Wimberly <@armw4>",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-regenerator": "^6.9.0",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "html-webpack-plugin": "^2.19.0",
+    "postcss-loader": "^0.9.1",
+    "precss": "^1.4.0",
+    "react-transform-hmr": "^1.0.4",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "react-router-redux": "^4.0.4",
+    "redux": "^3.5.2",
+    "whatwg-fetch": "^1.0.0"
+  }
+}
