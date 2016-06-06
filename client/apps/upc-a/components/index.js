@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from './style.css'
 
-const Container = ({ a, b, c }) => <div className={styles.root}>{a}</div>
+const Container = () => <div className={styles.root}>Hello @wacky-world.net</div>
 
 export default Container
