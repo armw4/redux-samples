@@ -1,14 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import style from './style.css'
-
-const PRODUCT_CODE_SHAPE = PropTypes.shape({
-  value: PropTypes.string
-})
+import * as Types from './prop-types'
 
 class Container extends Component {
   static propTypes = {
-    productCodes: PropTypes.arrayOf(PRODUCT_CODE_SHAPE).isRequired,
+    productCodes: PropTypes.arrayOf(Types.PRODUCT_CODE_SHAPE).isRequired,
     productCodesInvalid: PropTypes.bool.isRequired
   }
 
