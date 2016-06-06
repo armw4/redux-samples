@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import styles from './style.css'
+import style from './style.css'
 
-const Container = () => <div className={styles.root}>Hello @wacky-world.net</div>
+const Container = () => <div className={style.root}>Hello @wacky-world.net</div>
 
 export default Container
