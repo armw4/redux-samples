@@ -50,7 +50,7 @@ export default class extends Component {
               )
             })
           }
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" disabled={productCodesInvalid} />
         </form>
       </div>
     )

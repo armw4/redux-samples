@@ -3,7 +3,7 @@
   border: 0.1em solid grey;
   padding: 1em;
 
-  .digits-remaining {
+  .digits-remaining, .error {
     vertical-align: bottom;
     padding-left: 0.2em;
   }

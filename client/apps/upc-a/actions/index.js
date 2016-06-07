@@ -37,10 +37,11 @@ export const validateUpc = (value, index) => {
 
 export const INVALIDATE_UPC = 'INVALIDATE_UPC'
 
-export const invalidateUpc = (error, index) => {
+export const invalidateUpc = ({ error, value, index }) => {
   return {
     type: INVALIDATE_UPC,
+    error,
     value,
-    error
+    index
   }
 }
