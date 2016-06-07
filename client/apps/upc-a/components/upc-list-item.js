@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import * as LocalPropTypes from './prop-types'
 import * as ErrorCodes from './error-codes'
 import style from './style.css'
-import { ALL_DIGITS, CODE_LENGTH, normalizedValue } from '../../../lib/upc-a'
+import { ALL_DIGITS, CODE_LENGTH, normalizedValue, passesCheckDigitVerification } from '../../../lib/upc-a'
 
 export default class extends Component {
   static propTypes = {
@@ -26,8 +26,14 @@ export default class extends Component {
       } else {
         const normalizedCode = normalizedValue(value)
 
-        if (value.length === CODE_LENGTH) {
-          onChange(normalizedCode, index)
+        if (normalizedCode.length === CODE_LENGTH) {
+          if (passesCheckDigitVerification(normalizedCode)) {
+            onValid(normalizedCode, index)
+          } else {
+            const error = { error: ErrorCodes.CHECK_DIGIT_ERROR, value: normalizedCode, index }
+
+            onInvalid(error)
+          }
         } else {
           onChange(normalizedCode, index)
         }
@@ -45,9 +51,9 @@ export default class extends Component {
     onDelete(index)
   }
 
-  deleteButton = () => <button className="remove" onClick={this.handleDelete} type="button">X</button>
+  deleteButton = () => <button title="remove UPC" className="remove" onClick={this.handleDelete} type="button">X</button>
 
-  successIcon = () => <span className="success">✓</span>
+  successIcon = () => <span title="you entered a valid UPC" className="success">✓</span>
 
   errorMessage = (value, error) => {
     switch (error) {
@@ -58,6 +64,7 @@ export default class extends Component {
 
         return <span className={style.error}>You entered { length - CODE_LENGTH } digit(s) too many</span>
       case ErrorCodes.CHECK_DIGIT_ERROR:
+        return <span className={style.error}>Check digit verification failed (did you mistype a digit?)</span>
       default:
         throw new Error('invalid error code')
     }
