@@ -8,7 +8,7 @@ export const addUpc = () => {
 
 export const CHANGE_UPC = 'UPDATE_UPC'
 
-export const changeUpc = (index, value) => {
+export const changeUpc = (value, index) => {
   return {
     type: CHANGE_UPC,
     value,
@@ -18,7 +18,7 @@ export const changeUpc = (index, value) => {
 
 export const VALIDATE_UPC = 'VALIDATE_UPC'
 
-export const validateUpc = (index, value) => {
+export const validateUpc = (value, index) => {
   return {
     type: VALIDATE_UPC,
     value,
@@ -28,7 +28,7 @@ export const validateUpc = (index, value) => {
 
 export const INVALIDATE_UPC = 'INVALIDATE_UPC'
 
-export const invalidateUpc = (index, error) => {
+export const invalidateUpc = (error, index) => {
   return {
     type: INVALIDATE_UPC,
     value,

@@ -10,9 +10,10 @@ export default class extends Component {
     index: PropTypes.number.isRequired
   }
 
-  handleChange = (e) => {
-    console.log(e)
+  handleChange = ({ target: { value } }) => {
     const { onChange, onValid, onInvalid, index } = this.props
+
+    onChange(value, index)
   }
 
   render () {

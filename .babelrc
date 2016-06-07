@@ -1,6 +1,6 @@
 {
   "presets": ["react", "es2015"],
-  "plugins": ["transform-regenerator", "transform-runtime", "transform-class-properties"],
+  "plugins": ["transform-regenerator", "transform-runtime", "transform-class-properties", "transform-object-rest-spread"],
   "env": [["react-transform", {
     "transforms": "react-transform-hmr",
     "imports": ["react"],
