@@ -1,0 +1,8 @@
+input[type=text] {
+  padding: 0.6em;
+}
+
+input {
+  display: block;
+  margin-top: 2em;
+}
