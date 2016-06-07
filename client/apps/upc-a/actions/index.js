@@ -6,6 +6,15 @@ export const addUpc = () => {
   }
 }
 
+export const DELETE_UPC = 'DELETE_UPC'
+
+export const deleteUpc = (index) => {
+  return {
+    type: DELETE_UPC,
+    index
+  }
+}
+
 export const CHANGE_UPC = 'UPDATE_UPC'
 
 export const changeUpc = (value, index) => {

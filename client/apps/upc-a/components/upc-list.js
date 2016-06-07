@@ -13,7 +13,16 @@ export default class extends Component {
   }
 
   render () {
-    const { onAdd, onChange, onValid, onInvalid, onSubmit, productCodes, productCodesInvalid } = this.props
+    const {
+      onAdd,
+      onDelete,
+      onChange,
+      onValid,
+      onInvalid,
+      onSubmit,
+      productCodes,
+      productCodesInvalid
+    } = this.props
 
     return (
       <div>
@@ -24,6 +33,7 @@ export default class extends Component {
               return (
                 <UPCListItem
                   key={index}
+                  onDelete={onDelete}
                   onChange={onChange}
                   onValid={onValid}
                   onInvalid={onInvalid}

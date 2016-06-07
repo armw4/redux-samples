@@ -5,6 +5,11 @@ const DEFAULT_STATE = [DEFAULT_UPC]
 
 export default (state = DEFAULT_STATE, action) => {
   switch(action.type) {
+    case ActionTypes.DELETE_UPC:
+      return [
+        ...state.slice(0, action.index),
+        ...state.slice(action.index + 1)
+      ]
     case ActionTypes.ADD_UPC:
       return [...state, DEFAULT_UPC]
     case ActionTypes.CHANGE_UPC:
