@@ -44,10 +44,10 @@ class Container extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ productCodes }) => {
   return {
-    productCodes: state.productCodes,
-    productCodesInvalid: true
+    productCodes: productCodes,
+    productCodesInvalid: productCodes.filter(({ valid }) => valid).length !== productCodes.length
   }
 }
 
