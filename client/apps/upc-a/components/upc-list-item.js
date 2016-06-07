@@ -51,9 +51,9 @@ export default class extends Component {
     onDelete(index)
   }
 
-  deleteButton = () => <button title="remove UPC" className="remove" onClick={this.handleDelete} type="button">X</button>
+  deleteButton = () => <button title="remove UPC" className={style.remove} onClick={this.handleDelete} type="button">X</button>
 
-  successIcon = () => <span title="you entered a valid UPC" className="success">✓</span>
+  successIcon = () => <span title="you entered a valid UPC" className={style.success}>✓</span>
 
   errorMessage = (value, error) => {
     switch (error) {

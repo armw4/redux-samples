@@ -16,14 +16,5 @@
     &:focus {
       outline: 0;
     }
-
-    &.remove {
-      background: none;
-      color: #B20000;
-      font-weight: bold;
-      font-size: 1em;
-      padding: 0 0 0 0.2em;
-      vertical-align: bottom;
-    }
   }
 }

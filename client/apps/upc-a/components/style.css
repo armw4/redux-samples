@@ -3,8 +3,23 @@
   border: 0.1em solid grey;
   padding: 1em;
 
-  .digits-remaining, .error {
+  .digits-remaining, .error, .success {
     vertical-align: bottom;
     padding-left: 0.2em;
+  }
+
+  .success {
+    color: green;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  .remove {
+    background: none;
+    color: #B20000;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 0 0 0 0.2em;
+    vertical-align: bottom;
   }
 }

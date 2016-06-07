@@ -19,7 +19,7 @@ export const passesCheckDigitVerification = (value) => {
     const parsedDigit = parseInt(digit, 10)
 
     return total + (isOneBasedOddPositionedNumber ? parsedDigit * 3 : parsedDigit)
-  })
+  }, 0)
 
   const sumModTen = sum % 10
   const checkDigit = sumModTen === 0 ? sumModTen : 10 - sumModTen
