@@ -12,6 +12,14 @@ export default class extends Component {
     productCodesInvalid: PropTypes.bool.isRequired
   }
 
+  handleSubmit = (e) => {
+    const { onSubmit } = this.props
+
+    e.preventDefault()
+
+    onSubmit()
+  }
+
   render () {
     const {
       onAdd,
@@ -19,7 +27,6 @@ export default class extends Component {
       onChange,
       onValid,
       onInvalid,
-      onSubmit,
       productCodes,
       productCodesInvalid
     } = this.props
@@ -27,7 +34,7 @@ export default class extends Component {
     return (
       <div>
         <button type="button" onClick={onAdd}>Add UPC +</button>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={this.handleSubmit}>
           {
             productCodes.map((productCode, index) => {
               return (
