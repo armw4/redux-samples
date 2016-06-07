@@ -24,7 +24,15 @@ export default (state = DEFAULT_STATE, action) => {
       return [...state, DEFAULT_UPC]
     case ActionTypes.CHANGE_UPC:
       return update(state, action.index, (productCode) => {
-        return { ...productCode, value: action.value, error: null }
+        return { ...productCode, value: action.value, error: null, valid: false }
+      })
+    case ActionTypes.VALIDATE_UPC:
+      return update(state, action.index, (productCode) => {
+        return { ...productCode, value: action.value, error: null, valid: true }
+      })
+    case ActionTypes.INVALIDATE_UPC:
+      return update(state, action.index, (productCode) => {
+        return { ...productCode, value: action.value, error: action.error, valid: false }
       })
     default:
       return state
