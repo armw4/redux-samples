@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import * as LocalPropTypes from './prop-types'
+import * as ErrorCodes from './error-codes'
 
 export default class extends Component {
   static propTypes = {
