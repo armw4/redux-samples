@@ -2,4 +2,9 @@
   margin-top: 2em;
   border: 0.1em solid grey;
   padding: 1em;
+
+  input {
+    display: block;
+    margin-top: 2em;
+  }
 }

@@ -1,16 +1,41 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import UPCList from './upc-list'
 import style from './style.css'
-import * as Types from './prop-types'
+import * as LocalPropTypes from './prop-types'
 
 class Container extends Component {
   static propTypes = {
-    productCodes: PropTypes.arrayOf(Types.PRODUCT_CODE_SHAPE).isRequired,
+    productCodes: PropTypes.arrayOf(LocalPropTypes.PRODUCT_CODE_SHAPE).isRequired,
     productCodesInvalid: PropTypes.bool.isRequired
   }
 
+  handleChange = () => {
+
+  }
+
+  handleValid = () => {
+
+  }
+
+  handleInvalid = () => {
+
+  }
+
   render () {
-    return <div className={style.root}>Hello @wacky-world.net</div>
+    const { productCodes, productCodesInvalid } = this.props
+
+    return (
+      <div className={style.root}>
+        <UPCList
+          onChange={this.handleChange}
+          onValid={this.handleValid}
+          onInvalid={this.handleInvalid}
+          productCodes={productCodes}
+          productCodesInvalid={productCodesInvalid}
+        />
+      </div>
+    )
   }
 }
 
