@@ -3,6 +3,7 @@ import * as LocalPropTypes from './prop-types'
 import * as ErrorCodes from './error-codes'
 import style from './style.css'
 
+const CODE_LENGTH = 12
 const ALL_DIGITS = /^\d+$/
 
 export default class extends Component {
@@ -17,9 +18,16 @@ export default class extends Component {
 
   handleChange = ({ target: { value } }) => {
     const { onChange, onValid, onInvalid, index } = this.props
+    const { length } = value
 
-    if (ALL_DIGITS.test(value) || !value.length) {
-      onChange(value, index)
+    if (ALL_DIGITS.test(value) || !length) {
+      if (length > CODE_LENGTH) {
+        const error = { error: ErrorCodes.TOO_MANY_DIGITS, value, index }
+
+        onInvalid(error)
+      } else {
+        onChange(value, index)
+      }
     } else {
       const error = { error: ErrorCodes.NON_NUMBER, value, index }
 
@@ -37,18 +45,21 @@ export default class extends Component {
 
   successIcon = () => <span className="success">✓</span>
 
-  errorMessage = (error) => {
+  errorMessage = (value, error) => {
     switch (error) {
       case ErrorCodes.NON_NUMBER:
-        return <span className={style.error}>UPC must be a 12 digit number</span>
+        return <span className={style.error}>UPC must be a {CODE_LENGTH} digit number</span>
       case ErrorCodes.TOO_MANY_DIGITS:
+        const { length } = value
+
+        return <span className={style.error}>You entered { length - CODE_LENGTH } digit(s) too many</span>
       case ErrorCodes.CHECK_DIGIT_ERROR:
       default:
         throw new Error('invalid error code')
     }
   }
 
-  digitsRemaining = (value) => <span className={style.digitsRemaining}>{12 - value.length} digits remaining</span>
+  digitsRemaining = (value) => <span className={style.digitsRemaining}>{CODE_LENGTH - value.length} digits remaining</span>
 
   render () {
     const { productCode: { value, error, valid }, index } = this.props
@@ -58,7 +69,7 @@ export default class extends Component {
         <input type="text" onChange={this.handleChange} value={value} placeholder="UPC (i.e. 011111111111)" />
         { index === 0 ? null : this.deleteButton() }
         { valid ? this.successIcon() : null }
-        { error ? this.errorMessage(error) : null }
+        { error ? this.errorMessage(value, error) : null }
         { value.length && !valid && !error ? this.digitsRemaining(value) : null }
       </div>
     )
