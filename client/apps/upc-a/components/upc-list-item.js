@@ -20,7 +20,10 @@ export default class extends Component {
     const { productCode: { value } } = this.props
 
     return (
-      <input type="text" onChange={this.handleChange} value={value} placeholder="Say something..." />
+      <div>
+        <input type="text" onChange={this.handleChange} value={value} placeholder="UPC (i.e. 011111111111)" />
+        <button className="remove" type="button">X</button>
+      </div>
     )
   }
 }
