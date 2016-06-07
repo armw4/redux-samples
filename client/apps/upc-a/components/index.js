@@ -17,11 +17,12 @@ class Container extends Component {
   }
 
   render () {
-    const { productCodes, productCodesInvalid, changeUpc, validateUpc, invalidateUpc } = this.props
+    const { productCodes, productCodesInvalid, addUpc, changeUpc, validateUpc, invalidateUpc } = this.props
 
     return (
       <div className={style.root}>
         <UPCList
+          onAdd={addUpc}
           onChange={changeUpc}
           onValid={validateUpc}
           onInvalid={invalidateUpc}

@@ -4,6 +4,7 @@ import UPCListItem from './upc-list-item'
 
 export default class extends Component {
   static propTypes = {
+    onAdd: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     onValid: PropTypes.func.isRequired,
     onInvalid: PropTypes.func.isRequired,
@@ -12,11 +13,11 @@ export default class extends Component {
   }
 
   render () {
-    const { onChange, onValid, onInvalid, onSubmit, productCodes, productCodesInvalid } = this.props
+    const { onAdd, onChange, onValid, onInvalid, onSubmit, productCodes, productCodesInvalid } = this.props
 
     return (
       <div>
-        <button type="button">Add UPC +</button>
+        <button type="button" onClick={onAdd}>Add UPC +</button>
         <form onSubmit={onSubmit}>
           {
             productCodes.map((productCode, index) => {
