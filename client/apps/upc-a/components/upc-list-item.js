@@ -2,9 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import * as LocalPropTypes from './prop-types'
 import * as ErrorCodes from './error-codes'
 import style from './style.css'
-
-const CODE_LENGTH = 12
-const ALL_DIGITS = /^\d+$/
+import { ALL_DIGITS, CODE_LENGTH, normalizedValue } from '../../../lib/upc-a'
 
 export default class extends Component {
   static propTypes = {
@@ -26,7 +24,13 @@ export default class extends Component {
 
         onInvalid(error)
       } else {
-        onChange(value, index)
+        const normalizedCode = normalizedValue(value)
+
+        if (value.length === CODE_LENGTH) {
+          onChange(normalizedCode, index)
+        } else {
+          onChange(normalizedCode, index)
+        }
       }
     } else {
       const error = { error: ErrorCodes.NON_NUMBER, value, index }
