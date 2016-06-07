@@ -1,4 +1,4 @@
-const DEFAULT_STATE = [{ value: null }]
+const DEFAULT_STATE = [{ value: '' }]
 
 export default (state = DEFAULT_STATE, action) => {
   switch(action.type) {
