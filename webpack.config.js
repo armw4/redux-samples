@@ -15,8 +15,10 @@ module.exports = {
       loader: 'babel-loader?cacheDirectory'
     }, {
       test: /\.css$/,
-      exclude: /node_modules/,
       loader: 'style-loader!css-loader?modules&camelCase&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
+    }, {
+      test: /\.svg$/,
+      loader: 'svg-inline-loader'
     }]
   },
   postcss: function() {

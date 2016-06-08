@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import * as LocalPropTypes from './prop-types'
 import * as ErrorCodes from './error-codes'
 import style from './style.css'
+import SVG from 'svg-inline-react'
 import { ALL_DIGITS, CODE_LENGTH, normalizedValue, passesCheckDigitVerification } from '../../../lib/upc-a'
 
 export default class extends Component {
@@ -51,7 +52,13 @@ export default class extends Component {
     onDelete(index)
   }
 
-  deleteButton = () => <button title="remove UPC" className={style.remove} onClick={this.handleDelete} type="button">X</button>
+  deleteButton = () => {
+    return (
+      <button title="remove UPC" className={style.remove} onClick={this.handleDelete} type="button">
+        <SVG src={require('../../../fontawesome/red/svg/trash-o.svg')} />
+      </button>
+    )
+  }
 
   successIcon = () => <span title="you entered a valid UPC" className={style.success}>✓</span>
 

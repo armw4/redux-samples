@@ -15,10 +15,9 @@
   }
 
   .remove {
+    width: 2em;
+    height: 2em;
     background: none;
-    color: #B20000;
-    font-weight: bold;
-    font-size: 1em;
     padding: 0 0 0 0.2em;
     vertical-align: bottom;
   }
