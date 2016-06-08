@@ -70,6 +70,18 @@ const saveProductCodesError = () => {
   }
 }
 
+export const CLEAR_STATUS = 'CLEAR_STATUS'
+
+const clearStatus = () => {
+  return {
+    type: CLEAR_STATUS
+  }
+}
+
+const smoothDispatch = (fn) => {
+  setTimeout(fn, 1700)
+}
+
 export const saveProductCodes = () => {
   return async function (dispatch, getState) {
     dispatch(saveProductCodesSync())
@@ -83,9 +95,15 @@ export const saveProductCodes = () => {
     })
 
     if (status === 200) {
-      dispatch(saveProductCodesSuccess())
+      smoothDispatch(() => {
+        dispatch(saveProductCodesSuccess())
+        smoothDispatch(() => dispatch(clearStatus()))
+      })
     } else {
-      dispatch(saveProductCodesError())
+      smoothDispatch(() => {
+        dispatch(saveProductCodesError())
+        smoothDispatch(() => dispatch(clearStatus()))
+      })
     }
   }
 }

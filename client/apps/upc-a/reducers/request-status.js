@@ -8,6 +8,8 @@ export default (state = null, action) => {
       return { pending: false, error: false, success: true }
     case ActionTypes.SAVE_PRODUCT_CODES:
       return { pending: true, error: false, success: true }
+    case ActionTypes.CLEAR_STATUS:
+      return {}
     default:
       return state
   }
