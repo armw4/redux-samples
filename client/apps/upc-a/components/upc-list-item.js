@@ -83,7 +83,7 @@ export default class extends Component {
     }
   }
 
-  digitsRemaining = (value) => <span className={style.digitsRemaining}>{CODE_LENGTH - value.length} digits remaining</span>
+  digitsRemaining = (value) => <span className={style.digitsRemaining}>{CODE_LENGTH - value.length} digit(s) remaining</span>
 
   render () {
     const { productCode: { value, error, valid }, index } = this.props
