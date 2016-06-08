@@ -27,7 +27,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './client/index.template.html'
-    })
+    }),
+    new webpack.EnvironmentPlugin(['UPC_URL'])
   ],
   devServer: {
     contentBase: './build',

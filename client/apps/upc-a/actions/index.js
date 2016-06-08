@@ -45,3 +45,47 @@ export const invalidateUpc = ({ error, value, index }) => {
     index
   }
 }
+
+export const SAVE_PRODUCT_CODES = 'SAVE_PRODUCT_CODES'
+
+const saveProductCodesSync = () => {
+  return {
+    type: SAVE_PRODUCT_CODES
+  }
+}
+
+export const SAVE_PRODUCT_CODES_SUCCESS = 'SAVE_PRODUCT_CODES_SUCESS'
+
+const saveProductCodesSuccess = () => {
+  return {
+    type: SAVE_PRODUCT_CODES_SUCCESS
+  }
+}
+
+export const SAVE_PRODUCT_CODES_ERROR = 'SAVE_PRODUCT_CODES_ERROR'
+
+const saveProductCodesError = () => {
+  return {
+    type: SAVE_PRODUCT_CODES_ERROR
+  }
+}
+
+export const saveProductCodes = () => {
+  return async function (dispatch, getState) {
+    dispatch(saveProductCodesSync())
+
+    const { productCodes } = getState()
+    const { status } = await fetch(process.env.UPC_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        list: productCodes.map(({ value }) => value)
+      })
+    })
+
+    if (status === 200) {
+      dispatch(saveProductCodesSuccess())
+    } else {
+      dispatch(saveProductCodesError())
+    }
+  }
+}

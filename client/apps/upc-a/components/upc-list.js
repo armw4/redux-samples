@@ -8,6 +8,7 @@ export default class extends Component {
     onChange: PropTypes.func.isRequired,
     onValid: PropTypes.func.isRequired,
     onInvalid: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
     productCodes: PropTypes.arrayOf(LocalPropTypes.PRODUCT_CODE_SHAPE).isRequired,
     productCodesInvalid: PropTypes.bool.isRequired
   }
