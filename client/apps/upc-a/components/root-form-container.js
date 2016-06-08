@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { addUpc, deleteUpc, changeUpc, validateUpc, invalidateUpc, saveProductCodes } from '../actions'
-import UPCList from './upc-list'
+import List from './list'
 import style from './style.css'
 import * as LocalPropTypes from './prop-types'
 
@@ -32,7 +32,7 @@ class Container extends Component {
 
     return (
       <div className={style.root}>
-        <UPCList
+        <List
           onAdd={addUpc}
           onDelete={deleteUpc}
           onChange={changeUpc}

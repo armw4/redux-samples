@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import * as LocalPropTypes from './prop-types'
-import UPCListItem from './upc-list-item'
+import ListItem from './list-item'
 
 export default class extends Component {
   static propTypes = {
@@ -39,7 +39,7 @@ export default class extends Component {
           {
             productCodes.map((productCode, index) => {
               return (
-                <UPCListItem
+                <ListItem
                   key={index}
                   onDelete={onDelete}
                   onChange={onChange}
