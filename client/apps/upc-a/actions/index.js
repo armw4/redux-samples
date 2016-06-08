@@ -78,6 +78,8 @@ const clearStatus = () => {
   }
 }
 
+// NOTE: not *quite* sure how to do this at the react level. maybe via a ref or encapsulate it within the
+// animation itself. this isn't *terrible*, though
 const smoothDispatch = (fn) => {
   setTimeout(fn, 1700)
 }
