@@ -8,54 +8,47 @@ import * as LocalPropTypes from './prop-types'
 
 class Container extends Component {
   static propTypes = {
-    productCodes: PropTypes.arrayOf(LocalPropTypes.PRODUCT_CODE_SHAPE).isRequired,
-    productCodesInvalid: PropTypes.bool.isRequired,
-    addUpc: PropTypes.func.isRequired,
     deleteUpc: PropTypes.func.isRequired,
     changeUpc: PropTypes.func.isRequired,
     validateUpc: PropTypes.func.isRequired,
     invalidateUpc: PropTypes.func.isRequired,
-    saveProductCodes: PropTypes.func.isRequired
+    productCodes: PropTypes.arrayOf(LocalPropTypes.PRODUCT_CODE_SHAPE).isRequired,
+    productCodesInvalid: PropTypes.bool.isRequired
   }
 
   render () {
     const {
-      productCodes,
-      productCodesInvalid,
-      addUpc,
       deleteUpc,
       changeUpc,
       validateUpc,
       invalidateUpc,
-      saveProductCodes
+      productCodes,
+      productCodesInvalid
     } = this.props
 
     return (
-      <div className={style.root}>
-        <List
-          onAdd={addUpc}
-          onDelete={deleteUpc}
-          onChange={changeUpc}
-          onValid={validateUpc}
-          onSubmit={saveProductCodes}
-          onInvalid={invalidateUpc}
-          productCodes={productCodes}
-          productCodesInvalid={productCodesInvalid}
-        />
-      </div>
+      <List
+        onDelete={deleteUpc}
+        onChange={changeUpc}
+        onValid={validateUpc}
+        onSubmit={saveProductCodes}
+        onInvalid={invalidateUpc}
+        productCodes={productCodes}
+        productCodesInvalid={productCodesInvalid}
+      />
     )
   }
 }
 
 const mapStateToProps = ({ productCodes }) => {
   return {
-    productCodes: productCodes,
+    productCodes,
     productCodesInvalid: productCodes.filter(({ valid }) => valid).length !== productCodes.length
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  const actions ={ addUpc, deleteUpc, changeUpc, validateUpc, invalidateUpc, saveProductCodes }
+  const actions ={ deleteUpc, changeUpc, validateUpc, invalidateUpc }
 
   return bindActionCreators(actions, dispatch)
 }
