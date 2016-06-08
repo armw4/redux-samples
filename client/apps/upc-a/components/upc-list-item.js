@@ -60,7 +60,13 @@ export default class extends Component {
     )
   }
 
-  successIcon = () => <span title="you entered a valid UPC" className={style.success}>✓</span>
+  successIcon = () => {
+    return (
+      <span className={style.success}>
+        <SVG title="you entered a valid UPC" src={require('../../../fontawesome/green/svg/check-circle.svg')} />
+      </span>
+    )
+  }
 
   errorMessage = (value, error) => {
     switch (error) {
