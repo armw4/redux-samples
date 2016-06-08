@@ -51,6 +51,14 @@ export default class extends Component {
               )
             })
           }
+          {// NOTE: it probably would have been better to make the button and the list of
+           // product codes two separate container components, as they're likely to have divergent
+           // keys that they consume from the state tree in the future (i.e. disable button while request
+           // is pending). we got a bit eager here. the parent container component sitting above these two
+           // would become a normal component, encapsulating two container components. this is fine, but
+           // splitting these out in advance would ease refactoring. it's kool, though. there is a YAGNI principal
+           // there and i'm fine with being pragmatic. i'd say it's just a judgement call
+          }
           <input type="submit" value="Submit" disabled={productCodesInvalid} />
         </form>
       </div>
