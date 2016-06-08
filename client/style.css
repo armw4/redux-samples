@@ -1,3 +1,20 @@
+@define-mixin pulsate $color {
+  border: 3px solid $(color);
+  border-radius: 30px;
+  height: 18px;
+  width: 18px;
+  display: inline-block;
+  animation: pulsate 1s ease-out;
+  animation-iteration-count: infinite;
+  opacity: 0.0
+}
+
+@keyframes :global(pulsate) {
+  0% {transform: scale(0.1, 0.1); opacity: 0.0;}
+  50% {opacity: 1.0;}
+  100% {transform: scale(1.2, 1.2); opacity: 0.0;}
+}
+
 :global {
   input[type=text] {
     padding: 0.6em;
@@ -15,6 +32,20 @@
 
     &:focus {
       outline: 0;
+    }
+  }
+
+  .pulsate {
+    &.pending {
+      @mixin pulsate #999
+    }
+
+    &.success {
+      @mixin pulsate #008000
+    }
+
+    &.error {
+      @mixin pulsate #FF0000
     }
   }
 }

@@ -26,3 +26,14 @@
     vertical-align: bottom;
   }
 }
+
+.status-bar {
+  margin-top: 1em;
+
+  .message {
+    padding-left: 0.5em;
+    vertical-align: top;
+    padding-top: 0.3em;
+    display: inline-block;
+  }
+}
