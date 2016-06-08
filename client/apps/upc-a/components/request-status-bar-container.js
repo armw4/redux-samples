@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import RequestStatusBar from './request-status-bar'
 import * as LocalPropTypes from './prop-types'
 
 class Container extends Component {
@@ -10,13 +11,7 @@ class Container extends Component {
   render() {
     const { requestStatus } = this.props
 
-    if (!requestStatus) {
-      return null
-    }
-
-    const  { pending, success, error } = requestStatus
-
-    return <span>{!pending} - {!success} - {error}</span>
+    return requestStatus ? <RequestStatusBar requestStatus={requestStatus} /> : null
   }
 }
 
