@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Submit from './submit'
 import * as LocalPropTypes from './prop-types'
 import { getValidProductCodes } from '../selectors'
+import { REQUEST_PENDING } from '../constants'
 
 class Container extends Component {
   static propTypes = {
@@ -13,7 +13,7 @@ class Container extends Component {
   render () {
     const { requestStatus, productCodesInvalid } = this.props
 
-    return <Submit requestStatus={requestStatus} productCodesInvalid={productCodesInvalid} />
+    return <input type="submit" value="Submit" disabled={requestStatus === REQUEST_PENDING || productCodesInvalid} />
   }
 }
 
