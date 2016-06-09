@@ -12,8 +12,7 @@ class Container extends Component {
     changeUpc: PropTypes.func.isRequired,
     validateUpc: PropTypes.func.isRequired,
     invalidateUpc: PropTypes.func.isRequired,
-    productCodes: PropTypes.arrayOf(LocalPropTypes.PRODUCT_CODE_SHAPE).isRequired,
-    productCodesInvalid: PropTypes.bool.isRequired
+    productCodes: PropTypes.arrayOf(LocalPropTypes.PRODUCT_CODE_SHAPE).isRequired
   }
 
   render () {
@@ -22,8 +21,7 @@ class Container extends Component {
       changeUpc,
       validateUpc,
       invalidateUpc,
-      productCodes,
-      productCodesInvalid
+      productCodes
     } = this.props
 
     return (
@@ -34,17 +32,13 @@ class Container extends Component {
         onSubmit={saveProductCodes}
         onInvalid={invalidateUpc}
         productCodes={productCodes}
-        productCodesInvalid={productCodesInvalid}
       />
     )
   }
 }
 
 const mapStateToProps = ({ productCodes }) => {
-  return {
-    productCodes,
-    productCodesInvalid: productCodes.filter(({ valid }) => valid).length !== productCodes.length
-  }
+  return { productCodes }
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -8,8 +8,7 @@ export default class extends Component {
     onChange: PropTypes.func.isRequired,
     onValid: PropTypes.func.isRequired,
     onInvalid: PropTypes.func.isRequired,
-    productCodes: PropTypes.arrayOf(LocalPropTypes.PRODUCT_CODE_SHAPE).isRequired,
-    productCodesInvalid: PropTypes.bool.isRequired
+    productCodes: PropTypes.arrayOf(LocalPropTypes.PRODUCT_CODE_SHAPE).isRequired
   }
 
   render () {
@@ -18,8 +17,7 @@ export default class extends Component {
       onChange,
       onValid,
       onInvalid,
-      productCodes,
-      productCodesInvalid
+      productCodes
     } = this.props
 
     return (
@@ -39,7 +37,6 @@ export default class extends Component {
             )
           })
         }
-        <input type="submit" value="Submit" disabled={productCodesInvalid} />
       </div>
     )
   }

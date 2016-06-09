@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import ListContainer from './list-container'
+import SubmitContainer from './submit-container'
 
 export default class extends Component {
   static propTypes = {
@@ -18,6 +19,7 @@ export default class extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <ListContainer />
+        <SubmitContainer />
       </form>
     )
   }
