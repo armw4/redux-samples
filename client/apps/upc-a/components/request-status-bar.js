@@ -43,7 +43,7 @@ const Component = ({ requestStatus }) => {
 }
 
 Component.propTypes = {
-  requestStatus: LocalPropTypes.REQUEST_STATUS.isRequired
+  requestStatus: LocalPropTypes.REQUEST_STATUS
 }
 
 export default Component
