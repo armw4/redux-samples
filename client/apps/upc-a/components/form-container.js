@@ -24,7 +24,7 @@ class Container extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  const actions ={ addUpc, saveProductCodes }
+  const actions = { addUpc, saveProductCodes }
 
   return bindActionCreators(actions, dispatch)
 }
