@@ -29,10 +29,10 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(actions, dispatch)
 }
 
-// no state needed so we don't subscribe to the store. this means we don't re-render
+// no state needed so we don't subscribe to the store. this means we don't rerender
 // when child/constituent components update the state. we only want to interface w/ the store
-// solely for the means of dispatching. this way we maintain optimal performance. we have container
-// within containers, which *could* hurt performance if not properly configured. here, the container
+// solely for the means of dispatching. this way we maintain optimal performance. we have containers
+// within a container, which *could* hurt performance if not properly configured. here, the container
 // components that care about the state does so further down the line, with this container component serving as
 // their parent...but not burdening them with unnecessary renders just for the purposes of handling submission.
 export default connect(null, mapDispatchToProps)(Container)
