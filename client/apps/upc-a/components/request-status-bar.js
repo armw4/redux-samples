@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import * as LocalPropTypes from './prop-types'
 import style from './style.css'
+import { REQUEST_PENDING, REQUEST_ERROR, REQUEST_SUCCESS } from '../constants'
 
 const pulsatePending = () => {
   return (
@@ -29,12 +30,12 @@ const pulsateSuccess = () => {
   )
 }
 
-const Component = ({ requestStatus: { pending, error, success } }) => {
-  if (pending) {
+const Component = ({ requestStatus }) => {
+  if (requestStatus === REQUEST_PENDING) {
     return pulsatePending()
-  } else if (error) {
+  } else if (requestStatus === REQUEST_ERROR) {
     return pulsateError()
-  } else if (success) {
+  } else if (requestStatus === REQUEST_SUCCESS) {
     return pulsateSuccess()
   }
 

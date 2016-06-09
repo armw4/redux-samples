@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import * as LocalPropTypes from './prop-types'
-import * as ErrorCodes from './error-codes'
+import * as ErrorCodes from '../constants'
 import style from './style.css'
 import SVG from 'svg-inline-react'
 import { ALL_DIGITS, CODE_LENGTH, normalizedValue, passesCheckDigitVerification } from '../../../lib/upc-a'

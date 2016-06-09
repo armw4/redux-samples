@@ -1,14 +1,10 @@
 import { PropTypes } from 'react'
-import { NON_NUMBER, TOO_MANY_DIGITS, CHECK_DIGIT_ERROR } from './error-codes'
+import * as Constants from '../constants'
 
 export const PRODUCT_CODE_SHAPE = PropTypes.shape({
   value: PropTypes.string.isRequired,
-  error: PropTypes.oneOf([NON_NUMBER, TOO_MANY_DIGITS, CHECK_DIGIT_ERROR]),
+  error: PropTypes.oneOf([Constants.NON_NUMBER, Constants.TOO_MANY_DIGITS, Constants.CHECK_DIGIT_ERROR]),
   valid: PropTypes.bool
 })
 
-export const REQUEST_STATUS = PropTypes.shape({
-  pending: PropTypes.bool,
-  error: PropTypes.bool,
-  success: PropTypes.bool
-})
+export const REQUEST_STATUS = PropTypes.oneOf([Constants.REQUEST_PENDING, Constants.REQUEST_ERROR, Constants.REQUEST_SUCCESS])

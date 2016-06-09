@@ -22,8 +22,8 @@ const mapStateToProps = (state) => {
   const validProductCodes = getValidProductCodes(state)
 
   return {
+    requestStatus,
     productCodesInvalid: validProductCodes.length !== productCodes.length,
-    requestStatus
   }
 }
 
