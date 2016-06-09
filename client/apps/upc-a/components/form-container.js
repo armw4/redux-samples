@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { addUpc, saveProductCodes } from '../actions'
-import Form from './form'
+import ListContainer from './list-container'
+import SubmitContainer from './submit-container'
 import style from './style.css'
 
 class Container extends Component {
@@ -11,13 +12,24 @@ class Container extends Component {
     saveProductCodes: PropTypes.func.isRequired
   }
 
+  handleSubmit = (e) => {
+    const { saveProductCodes } = this.props
+
+    e.preventDefault()
+
+    saveProductCodes()
+  }
+
   render () {
-    const { addUpc, saveProductCodes } = this.props
+    const { addUpc } = this.props
 
     return (
       <div className={style.root}>
         <button type="button" onClick={addUpc}>Add UPC +</button>
-        <Form onSubmit={saveProductCodes} />
+        <form onSubmit={this.handleSubmit}>
+          <ListContainer />
+          <SubmitContainer />
+        </form>
       </div>
     )
   }
