@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actions'
 
-export default (state = null, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case ActionTypes.SAVE_PRODUCT_CODES_ERROR:
       return { pending: false, error: true, success: false }

@@ -11,7 +11,7 @@ class Container extends Component {
   render() {
     const { requestStatus } = this.props
 
-    return requestStatus ? <RequestStatusBar requestStatus={requestStatus} /> : null
+    return <RequestStatusBar requestStatus={requestStatus} />
   }
 }
 

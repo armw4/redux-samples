@@ -42,7 +42,7 @@ const Component = ({ requestStatus: { pending, error, success } }) => {
 }
 
 Component.propTypes = {
-  requestStatus: LocalPropTypes.REQUEST_STATUS
+  requestStatus: LocalPropTypes.REQUEST_STATUS.isRequired
 }
 
 export default Component
