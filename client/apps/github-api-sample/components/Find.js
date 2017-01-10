@@ -9,7 +9,7 @@ export default class extends Component {
     onFind()
   }
 
-  handleChange = (_, value) => {
+  handleChange = ({ target: { value } }) => {
     const { onUserChange } = this.props
 
     onUserChange(value)
