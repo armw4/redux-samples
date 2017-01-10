@@ -1,5 +1,5 @@
-export NOT_FOUND = 'NOT_FOUND'
+export const NOT_FOUND = 'NOT_FOUND'
 
-export GENERIC_ERROR = 'GENERIC_ERROR'
+export const GENERIC_ERROR = 'GENERIC_ERROR'
 
-export PENDING = 'PENDING'
+export const PENDING = 'PENDING'
