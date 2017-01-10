@@ -14,8 +14,6 @@ export const setUser = user => ({
   user
 })
 
-export const FETCH_BOOKINGS = 'FETCH_BOOKINGS'
-
 export const RECEIVE_REPOSITORIES = 'RECEIVE_REPOSITORIES'
 
 export const receiveRepositories = repositories => ({
