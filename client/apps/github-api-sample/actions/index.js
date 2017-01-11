@@ -51,7 +51,7 @@ export const fetchRepositories = () => {
     const { user } = getState()
 
     try {
-      const repositories = await fetch(`https://api.github.com/users/${user}/repos`)
+      const repositories = await fetch(`https://api.github.com/users/${user}/repos?sort=created`)
         .then(checkStatus)
         .then(parseJSON)
 
