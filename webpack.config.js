@@ -8,6 +8,12 @@ module.exports = {
     path: './client/build',
     filename: 'bundle.js'
   },
+  // enzyme config
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+  },
   module: {
     loaders: [{
       test: /\.js$/,
