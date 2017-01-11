@@ -1,4 +1,6 @@
-import { PENDING, NOT_FOUND, GENERIC_ERROR } from '../constants/'
+import { PENDING, NOT_FOUND, GENERIC_ERROR } from '../constants'
+import camelize from 'camelize'
+import makeError from 'make-error'
 
 export const SET_REQUEST_STATUS = 'SET_REQUEST_STATUS'
 
@@ -21,6 +23,9 @@ export const receiveRepositories = repositories => ({
   repositories
 })
 
+// so we can handle web errors (this guy would typically live in some errors file separate from our actions)
+const HttpError = makeError('HttpError')
+
 // we'd typically import a small wrapper around fetch that encapsulated error handling, parsing, etc.
 // but we'll inline it for this sample. there's also agraboso/redux-api-middleware, but it's not being maintained (issues still accumulating).
 const checkStatus = response  => {
@@ -29,7 +34,7 @@ const checkStatus = response  => {
   if (status >= 200 && status < 300) {
     return response
   } else {
-    let error = new Error(statusText)
+    let error = new HttpError(statusText)
 
     error.response = response
 
@@ -39,7 +44,7 @@ const checkStatus = response  => {
 
 const parseJSON = response => response.json()
 
-export const fetchBookings = () => {
+export const fetchRepositories = () => {
   return async function(dispatch, getState) {
     dispatch(setRequestStatus(PENDING))
 
@@ -50,14 +55,23 @@ export const fetchBookings = () => {
         .then(checkStatus)
         .then(parseJSON)
 
-      dispatch(receiveRepositories(repositories))
-    } catch(e) {
-      const { response: { status } } = e
+      const thisAintRubyOnRails = repositories.map(camelize)
 
-      if (status === 404) {
-        dispatch(setRequestStatus(NOT_FOUND))
+      dispatch(receiveRepositories(thisAintRubyOnRails))
+    } catch(e) {
+      // we need to ensure it's a web error as opposed to a react/component error (i.e. within the call to receiveRepositories)
+      // with Bluebird promised we'd call .catch(MyTypedError) and handle accordingly, but we're not dealing in Bluebird here.
+      if (e instanceof HttpError) {
+        const { response: { status } } = e
+
+        if (status === 404) {
+          dispatch(setRequestStatus(NOT_FOUND))
+        } else {
+          dispatch(setRequestStatus(GENERIC_ERROR))
+        }
       } else {
-        dispatch(setRequestStatus(GENERIC_ERROR))
+        // this isn't related to any web traffic so don't swallow it (let if fly!!!)
+        throw e
       }
     }
   }

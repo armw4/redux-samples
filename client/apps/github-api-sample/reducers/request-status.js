@@ -1,4 +1,4 @@
-import { RECEIVE_REPOSITORIES, SET_REQUEST_STATUS } from '../actions/'
+import { RECEIVE_REPOSITORIES, SET_REQUEST_STATUS } from '../actions'
 
 export default (state = null, action) => {
   switch (action.type) {
