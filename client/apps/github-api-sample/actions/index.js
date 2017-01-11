@@ -59,6 +59,7 @@ export const fetchRepositories = () => {
 
       dispatch(receiveRepositories(thisAintRubyOnRails))
     } catch(e) {
+      const { message } = e
       // we need to ensure it's a web error as opposed to a react/component error (i.e. within the call to receiveRepositories)
       // with Bluebird promised we'd call .catch(MyTypedError) and handle accordingly, but we're not dealing in Bluebird here.
       if (e instanceof HttpError) {
@@ -69,6 +70,18 @@ export const fetchRepositories = () => {
         } else {
           dispatch(setRequestStatus(GENERIC_ERROR))
         }
+      } else if (e instanceof TypeError && (message === 'Failed to fetch' || message === 'Network request failed')) {
+        // re: "Github API does not respond"
+        //
+        // both the native fetch and pollyfill throw TypeError for less trivial network issues.
+        // the fetch pollyfill will yield something like https://github.com/github/fetch/blob/4dbbfd0/fetch.js#L433,
+        // while Chrome tends to yield "Failed to fetch". i haven't tried other browsers. this heuristic (at least in Chrome), while i don't
+        // love it, also handles more than just timeout errors. it can handle stuff like name resolution failures as well.
+        // it can even handle when the scheme is wrong (i.e. Fetch API cannot load htps://api.github.com/users/fdsfsdfds/repos. URL scheme must be "http" or "https" for CORS request)
+        // it sucks that the resulting promise doesn't naturally handle this stuff, but it's a good learning experience nonetheless (i wonder how jQuery handles all this stuff).
+        // people *want* fetch to provide a timeout option (https://github.com/whatwg/fetch/issues/20), but I don't think it's made it
+        // into the spec at the time of this writing (shrugs).
+        dispatch(setRequestStatus(GENERIC_ERROR))
       } else {
         // this isn't related to any web traffic so don't swallow it (let if fly!!!)
         throw e
