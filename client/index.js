@@ -1,1 +1,1 @@
-import Github from './apps/github-api-sample/'
+import './apps/github-api-sample/'
