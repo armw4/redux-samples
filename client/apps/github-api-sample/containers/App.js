@@ -4,7 +4,7 @@ import Find from './Find'
 
 export default () => {
   return (
-    <div>
+    <div className="root">
       <Find />
       <Repositories />
     </div>
