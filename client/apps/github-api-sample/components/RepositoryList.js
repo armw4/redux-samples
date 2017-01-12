@@ -8,7 +8,7 @@ export default ({ repositories }) => {
 
       return <Repository key={id} details={repository} />
     }) :
-    <span>No public repositories exist for this user.</span>
+    <span className="no-users">No public repositories exist for this user.</span>
 
   return (
     <div className="repositories">

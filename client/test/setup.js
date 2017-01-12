@@ -1,4 +1,5 @@
-var jsdom = require('jsdom').jsdom
+import { jsdom } from 'jsdom'
+import 'isomorphic-fetch'
 
 global.document = jsdom('')
 global.window = document.defaultView

@@ -1,11 +1,11 @@
 import React from 'react'
 
 export default ({ details })=> {
-  const { name } = details
+  const { fullName, htmlUrl } = details
 
   return (
     <div className="repository">
-      <span>{name}</span>
+      <a target="_blank" href={htmlUrl}>{fullName}</a>
     </div>
   )
 }

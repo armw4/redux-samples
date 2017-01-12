@@ -3,7 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   devtool: 'eval-source-map',
-  entry: ['babel-polyfill', 'whatwg-fetch', './client/index.js'],
+  entry: ['babel-polyfill', 'isomorphic-fetch', './client/index.js'],
   output: {
     path: './client/build',
     filename: 'bundle.js'

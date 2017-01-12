@@ -6,11 +6,11 @@ import RepositoryList from '../components/RepositoryList'
 const requestStatus = status => {
   switch(status) {
     case PENDING: // TODO: Loading svg via font-awesome
-      return <span>Loading...</span>
+      return <span className="request-status">Loading...</span>
     case NOT_FOUND:
-      return <span>User not found.</span>
+      return <span className="request-status">User not found.</span>
     case GENERIC_ERROR:
-      return <span>An unexpected error occurred.</span>
+      return <span className="request-status">An unexpected error occurred.</span>
     default:
       throw new Error('invalid request status.')
   }
