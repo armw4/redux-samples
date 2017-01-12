@@ -16,3 +16,7 @@
 ```shell
 ➜ npm test
 ```
+
+#### What happened to the PropType validations?
+
+`PropTypes` validations omitted due to time constraints. I'll look to add them later.
