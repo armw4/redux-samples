@@ -7,7 +7,12 @@
 
 ```shell
 ➜ npm install
-➜ export UPC_URL=https://some.url.on.com/public/private/products
 ➜ npm start
 ➜ open http://localhost:8080
+```
+
+#### `tests`
+
+```shell
+➜ npm test
 ```
