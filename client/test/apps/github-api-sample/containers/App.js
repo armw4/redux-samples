@@ -74,7 +74,7 @@ describe('<App />', () => {
     })
   })
 
-  describe('when the user exists', () => {
+  describe('when the user exists and has public repositories', () => {
     before(() => {
       nock('https://api.github.com')
         .get('/users/goeuro-2012/repos?sort=created')
@@ -98,4 +98,30 @@ describe('<App />', () => {
       }, 100)
     })
   })
+
+  describe('when the user exists and has no public repositories', () => {
+    before(() => {
+      nock('https://api.github.com')
+        .get('/users/goeuro-2012/repos?sort=created')
+        .reply(200, [])
+    })
+
+    it('should display a message saying "No public repositories exist for this user."', (done) => {
+      userTextInput.simulate('change', { target: { value: 'goeuro-2012' } });
+      findForm.simulate('submit')
+
+      const loading = wrapper.find('.request-status')
+
+      assert.equal(loading.text(), 'Loading...')
+
+      setTimeout(() => {
+        const noUsers = wrapper.find('.repositories .no-users')
+
+        assert.equal(noUsers.text(), 'No public repositories exist for this user.')
+
+        done()
+      }, 100)
+    })
+  })
+
 })
